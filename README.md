@@ -2,7 +2,7 @@
 
 A simple desktop app for hospital reception workflows: add patients, filter/search, view stats, and export to Excel. Built with React + Vite, Electron, Tailwind CSS, and xlsx.
 
-### Badges
+### Technologies used
 - ![JavaScript](https://img.shields.io/badge/JavaScript-ES2023-F7DF1E?logo=javascript&logoColor=000)
 - ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=000)
 - ![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite&logoColor=fff)
