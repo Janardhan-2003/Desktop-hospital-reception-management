@@ -1,0 +1,102 @@
+{
+  "name": "hospital-reception-desktop",
+  "version": "1.0.0",
+  "description": "Hospital Reception Management Desktop App (React + Excel + Electron)",
+  "main": "electron/main.js",
+  "author": "Kokatam Janardhan Reddy",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev:react": "vite --port 5173",
+    "dev:electron": "wait-on http://localhost:5173 && powershell -Command \"$env:VITE_DEV_SERVER_URL='http://localhost:5173'; electron .\"",
+    "dev": "concurrently -k -r \"npm:dev:react\" \"npm:dev:electron\"",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "package": "electron-builder",
+    "dist": "npm run build && electron-builder",
+    "dist:win": "npm run build && electron-builder --win",
+    "dist:mac": "npm run build && electron-builder --mac",
+    "dist:linux": "npm run build && electron-builder --linux"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.13",
+    "lucide-react": "^0.542.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "tailwindcss": "^4.1.13",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.33.0",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "@vitejs/plugin-react": "^5.0.0",
+    "concurrently": "^9.1.2",
+    "electron": "^31.3.1",
+    "electron-builder": "^24.13.3",
+    "eslint": "^9.33.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.3.0",
+    "vite": "^7.1.2",
+    "wait-on": "^8.0.2"
+  },
+ "build": {
+  "appId": "com.hospital.reception",
+  "productName": "Hospital Reception Management",
+  "directories": {
+    "output": "dist"
+  },
+  "files": [
+    "dist-react/**",
+  "electron/**",
+  "src/utils/**",
+  "package.json"
+  ],
+  "extraResources": [
+    {
+      "from": "src/utils/",
+      "to": "utils/"
+    }
+  ],
+     "win": {
+     "target": [
+       {
+         "target": "nsis",
+         "arch": ["x64"]
+       }
+     ],
+     "certificateFile": "C:/certs/hospital.pfx",
+     "certificatePassword": "mypassword",
+     "publisherName": "Hospital Reception"
+   },
+  "mac": {
+    "target": [
+      {
+        "target": "dmg",
+        "arch": ["x64", "arm64"]
+      }
+    ],
+    "category": "public.app-category.medical"
+  },
+  "linux": {
+    "target": [
+      {
+        "target": "AppImage",
+        "arch": ["x64"]
+      }
+    ],
+    "category": "Office"
+  },
+  "nsis": {
+    "oneClick": false,
+    "perMachine": true,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "Hospital Reception"
+  }
+}
+
+}
